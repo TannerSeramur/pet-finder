@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
 import { connect } from 'react-redux';
 
@@ -14,25 +14,25 @@ export class Pals extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.nav}>
           <TouchableOpacity onPress={this.handleBackClick} style={styles.buttons}><Text>BACK</Text></TouchableOpacity>
           <View />
         </View>
-        <View >
+        <View style={styles.item}>
           {this.props.myPals.map((pal, idx) => {
             return <SoloPal key={idx} pal={pal} />
           })}
 
 
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state, ' ✅');
+  // console.log(state, ' ✅');
 
   return {
     myPals: state.pets.savedPals
@@ -50,7 +50,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Pals)
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'yellow',
+    backgroundColor: '#eeefea',
     flex: 1,
 
   },
@@ -61,5 +61,9 @@ const styles = StyleSheet.create({
   },
   buttons: {
     padding: 10
+  },
+  item: {
+    // backgroundColor: '#cddcdf',
+    marginBottom: 10
   }
 })

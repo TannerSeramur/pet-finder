@@ -17,7 +17,7 @@ export class Main extends Component {
   // }
   render() {
     return (
-      <Swiper ref={e => this.swiper = e} style={styles.wrapper} loop={false} scrollEnabled={false} >
+      <Swiper ref={e => this.swiper = e} style={styles.wrapper} loop={false} scrollEnabled={false} showsPagination={false} >
         <Home getSwiper={() => this.swiper} />
         <Pets getSwiper={() => this.swiper} />
         <Pals getSwiper={() => this.swiper} />

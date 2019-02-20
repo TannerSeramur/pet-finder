@@ -14,9 +14,9 @@ export class Pets extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.nav}>
-          <TouchableOpacity onPress={this.handleBackClick} style={styles.buttons}><Text>BACK</Text></TouchableOpacity>
-          <Text>Find a Pal</Text>
-          <TouchableOpacity onPress={this.handlePalsClick} style={styles.buttons}><Text>PALS</Text></TouchableOpacity>
+          <TouchableOpacity onPress={this.handleBackClick} style={styles.buttons}><Text style={styles.text}>BACK</Text></TouchableOpacity>
+          <Text style={{ fontSize: 20, color: '#527590' }}>p e r f e c t   p a l .</Text>
+          <TouchableOpacity onPress={this.handlePalsClick} style={styles.buttons}><Text style={styles.text}>PALS</Text></TouchableOpacity>
         </View>
         <View style={styles.swipeCards}>
           <SwiperCards />
@@ -29,7 +29,7 @@ export default Pets
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'yellow',
+    backgroundColor: '#eeefea',
     flex: 1,
 
   },
@@ -50,5 +50,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10
+  },
+  text: {
+    color: '#527590'
   }
 })

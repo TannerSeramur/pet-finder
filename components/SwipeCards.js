@@ -4,11 +4,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 
-import { savedPal } from "../store/actions";
+import { savedPal, getPets, removeCard } from "../store/actions";
 import { connect } from "react-redux";
 
 import SwipeCards from 'react-native-swipe-cards';
+// import { LocalTile } from 'react-native-maps';
 
+// /////////////////////////////////////////////////////////
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -17,15 +19,19 @@ class Card extends React.Component {
   render() {
     return (
       <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>
-        <Text>{this.props.text}</Text>
+        {/* <Text>{this.props.text}</Text> */}
+        {/* {console.log('⭐️ ', this.props, 'HERE ⭐️')} */}
+        <Image style={styles.thumbnail} source={{ uri: this.props.media.photos.photo[3].$t }} />
       </View>
     )
   }
 }
 
+// /////////////////////////////////////////////////////////
 class NoMoreCards extends Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
@@ -37,45 +43,41 @@ class NoMoreCards extends Component {
   }
 }
 
+// /////////////////////////////////////////////////////////
 class SwiperCards extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cards: [
-        { text: 'Tomato', backgroundColor: 'red' },
-        { text: 'Aubergine', backgroundColor: 'purple' },
-        { text: 'Courgette', backgroundColor: 'green' },
-        { text: 'Blueberry', backgroundColor: 'blue' },
-        { text: 'Umm...', backgroundColor: 'cyan' },
-        { text: 'orange', backgroundColor: 'orange' },
-      ]
-    };
+
   }
+
 
   handleYup = card => {
-    console.log(`Yup for ${card.text}`)
     this.props.savedPal(card)
-    // console.log(this.props)
   }
   handleNope = card => {
-    console.log(`Nope for ${card.text}`)
   }
-  handleMaybe = card => {
-    console.log(`Maybe for ${card.text}`)
+
+  handleCardRemoved = () => {
+    console.log('removing!!');
+    this.props.removeCard();
+
+
   }
   render() {
-    // If you want a stack of cards instead of one-per-one view, activate stack mode
-    // stack={true}
     return (
-      <SwipeCards
-        cards={this.state.cards}
-        renderCard={(cardData) => <Card {...cardData} />}
+      < SwipeCards
+        cards={this.props.allPals}
+        renderCard={(cardData) => <Card {...cardData} />
+        }
         renderNoMoreCards={() => <NoMoreCards />}
-
+        yupStyle={{ top: 10 }}
+        yupText={'SAVE!'}
+        nopeStyle={{ top: 10 }}
+        nopeText={'No THANKS'}
         handleYup={this.handleYup}
         handleNope={this.handleNope}
-        handleMaybe={this.handleMaybe}
-        hasMaybeAction
+        cardRemoved={this.handleCardRemoved}
+
       />
     )
   }
@@ -83,15 +85,17 @@ class SwiperCards extends React.Component {
 
 
 const mapStateToProps = state => {
-  console.log(state, 'state in swipercard')
-  return {
+  console.log('👻', state.pets.cardsLeft);
 
+  return {
+    allPals: state.pets.allPals
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    savedPal: card => dispatch(savedPal(card))
-
+    savedPal: card => dispatch(savedPal(card)),
+    getPets: data => dispatch(getPets(data)),
+    removeCard: () => dispatch(removeCard())
   };
 };
 
@@ -110,5 +114,18 @@ const styles = StyleSheet.create({
   },
   noMoreCardsText: {
     fontSize: 22,
+  },
+  thumbnail: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10
   }
 })
+
+// #eeefea
+// #cddcdf
+// #527590
+// #feb29b
+// .
+// #f2e1cd
+// .
