@@ -16,7 +16,9 @@ export const getPets = () => async (dispatch, getState) => {
 
 
   // let count
-  const data = await superagent.get(`http://api.petfinder.com/pet.find?key=NOKEY!!!!&format=json&location=${zip}&output=full&animal=dog&count=50`)
+  let url = `https://api.petfinder.com/v2/animals`
+  console.log('url', url);
+  const data = await superagent.get(url)
   console.log('😎 start', zip, ' 😎 😎 😎 😎 😎 😎 😎 😎 😎')
   dispatch({
     type: 'GET_PETS',
