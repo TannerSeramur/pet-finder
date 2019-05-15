@@ -17,11 +17,12 @@ class Card extends React.Component {
   }
 
   render() {
+    let img =  this.props.photos.length && this.props.photos[0] ? this.props.photos[0].full : "https://via.placeholder.com/420x320/ff7f7f/333333?text=Sample";
     return (
       <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>
         {/* <Text>{this.props.text}</Text> */}
-        {/* {console.log('⭐️ ', this.props, 'HERE ⭐️')} */}
-        <Image style={styles.thumbnail} source={{ uri: this.props.media.photos.photo[3].$t }} />
+        {console.log('⭐️ ', img, 'HERE ⭐️')}
+        <Image style={styles.thumbnail} source={{ uri: img}} />
       </View>
     )
   }
@@ -116,8 +117,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   thumbnail: {
-    width: '100%',
-    height: '100%',
+    width: '75%',
+    height: '75%',
     borderRadius: 10
   }
 })

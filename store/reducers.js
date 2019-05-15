@@ -13,8 +13,7 @@ export default (state = initialState, action) => {
       // console.log('⭐️', action.payload, '⭐️');
       return { ...state, savedPals: [...state.savedPals, action.payload] }
     case "GET_PETS":
-      console.log('👻');
-      // console.log('❎ seramuryet', action.payload, ' seramuryeet ✅');
+      console.log('PAYLOAD', action);
       return { ...state, allPals: [...state.allPals, ...action.payload], offset: state.offset + Number(action.offset) };
     case "REMOVE_CARD":
       return { ...state, cardsLeft: state.cardsLeft - 1 }
