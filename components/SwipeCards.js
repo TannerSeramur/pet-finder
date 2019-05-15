@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   thumbnail: {
-    width: '75%',
-    height: '75%',
+    width: '100%',
+    height: '100%',
     borderRadius: 10
   }
 })
