@@ -17,6 +17,7 @@ class Card extends React.Component {
   }
 
   render() {
+    console.log('this is props',this.props);
     let img =  this.props.photos.length && this.props.photos[0] ? this.props.photos[0].full : "https://via.placeholder.com/420x320/ff7f7f/333333?text=Sample";
     return (
       <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>

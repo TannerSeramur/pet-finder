@@ -11,17 +11,17 @@ export class SoloPal extends Component {
   }
 
   render() {
-    // console.log(this.props.pal, ' ✅');
+    console.log(' ✅ this.props.pal',this.props.pal);
 
     return (
       <View style={{ flexDirection: 'row', flex: 1 }}>
         <TouchableOpacity onPress={() => this.setModalVisible(!this.state.modalVisible)}>
           <View style={{ flexDirection: 'row', margin: 10, backgroundColor: 'rgba(205,220,223, 0.5)', width: 500, padding: 5, borderRadius: 5 }}>
-            <Image source={{ uri: this.props.pal.media.photos.photo[3].$t }} style={{ height: 60, width: 60, borderRadius: 25 }} />
+            <Image source={{ uri: this.props.pal.photos[0].medium }} style={{ height: 60, width: 60, borderRadius: 25 }} />
             <View style={styles.smallBio}>
-              <Text >Name: {this.props.pal.name.$t} </Text>
-              <Text>Age: {this.props.pal.age.$t} </Text>
-              <Text>Breed: {this.props.pal.breeds.breed.$t}</Text>
+              <Text >Name: {this.props.pal.name} </Text>
+              <Text>Age: {this.props.pal.age} </Text>
+              <Text>Breed: {this.props.pal.breeds.primary}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -35,7 +35,7 @@ export class SoloPal extends Component {
           }}>
           <ScrollView style={{ flux: 1 }}>
             <View style={styles.modalContainer}>
-              <Text style={styles.name}>{this.props.pal.name.$t}</Text>
+              <Text style={styles.name}>{this.props.pal.name}</Text>
               <TouchableOpacity
                 style={{
                   position: 'absolute',
@@ -48,15 +48,15 @@ export class SoloPal extends Component {
                 <Text style={{ fontSize: 25 }}>X</Text>
               </TouchableOpacity>
               <View style={{ alignItems: 'center' }}>
-                <Image source={{ uri: this.props.pal.media.photos.photo[3].$t }} style={styles.image} />
+                <Image source={{ uri: this.props.pal.photos[0].small }} style={styles.image} />
               </View>
-              <Text style={{ paddingHorizontal: 20, paddingTop: 20 }}>{this.props.pal.age.$t}</Text>
-              <Text style={{ paddingHorizontal: 20 }}>Gender: {this.props.pal.sex.$t}</Text>
-              <Text style={{ paddingHorizontal: 20 }}>{this.props.pal.breeds.breed.$t}</Text>
-              <Text style={styles.text}>{this.props.pal.description.$t}</Text>
+              <Text style={{ paddingHorizontal: 20, paddingTop: 20 }}>{this.props.pal.age}</Text>
+              <Text style={{ paddingHorizontal: 20 }}>Gender: {this.props.pal.sex}</Text>
+              <Text style={{ paddingHorizontal: 20 }}>{this.props.pal.breeds.primary}</Text>
+              <Text style={styles.text}>{this.props.pal.description}</Text>
               <Text style={styles.text}>Contact:</Text>
-              <Text style={styles.text}>Phone: {this.props.pal.contact.phone.$t}</Text>
-              <Text style={styles.text}>Email: {this.props.pal.contact.email.$t}</Text>
+              <Text style={styles.text}>Phone: {this.props.pal.contact.phone}</Text>
+              <Text style={styles.text}>Email: {this.props.pal.contact.email}</Text>
 
               <View style={{ alignItems: 'center', width: '100%' }}>
                 <TouchableOpacity
