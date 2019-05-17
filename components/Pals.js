@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import SoloPal from './SoloPal';
 
+
 export class Pals extends Component {
   handleBackClick = () => {
     this.props.getSwiper().scrollBy(-1);
@@ -21,6 +22,7 @@ export class Pals extends Component {
         </View>
         <View style={styles.item}>
           {this.props.myPals.map((pal, idx) => {
+            console.log('pal from pals', pal);
             return <SoloPal key={idx} pal={pal} />
           })}
 

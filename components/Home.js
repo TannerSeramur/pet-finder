@@ -34,10 +34,12 @@ export class Home extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = zip => {
   return {
-  };
-};
+    zip: this.state.zip
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     getPets: zip => dispatch(getPets(zip)),
@@ -45,7 +47,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
   container: {

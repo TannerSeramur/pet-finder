@@ -2,7 +2,6 @@
 import superagent from 'superagent';
 
 export const savedPal = card => {
-  // console.log(card, ' ✅⭐️');
   return {
     type: 'SAVED',
     payload: card
@@ -12,19 +11,33 @@ export const savedPal = card => {
 
 export const getPets = () => async (dispatch, getState) => {
   const { pets: { offset, zip } } = getState();
-  console.log(offset, zip, ' 🈯️');
+  const PFT = 'https://api.petfinder.com/v2/oauth2/token';
+  const PFURL =  `https://api.petfinder.com/v2/animals?type=dog&location=${zip}&distance=25&status=adoptable&limit=100`;
 
+  return superagent.post(PFT)
+  .type('form')
+  .send({
+    grant_type: "client_credentials",
+    client_id: "rNlTTAp5PATN74wcfiYW1s5uxF0j3HYjRX3jdM1hX514PJIikO",
+    client_secret: "ZDoximU9qEVXFArevQFTKyAqDF7ahhOX9ZkwF4Qr"
+  })
+  .then( response => {
+    let access_token = response.body.access_token;
+    return access_token;
+  })
+  .then(token => {
 
-  // let count
-  const data = await superagent.get(`http://api.petfinder.com/pet.find?key=NOKEY!!!!&format=json&location=${zip}&output=full&animal=dog&count=50`)
-  console.log('😎 start', zip, ' 😎 😎 😎 😎 😎 😎 😎 😎 😎')
-  dispatch({
-    type: 'GET_PETS',
-    payload: data.body.petfinder.pets.pet,
-    offset: data.body.petfinder.lastOffset.$t
+    return superagent.get(PFURL)
+      .set('Authorization', `Bearer ${token}`)
+      .then(response => {
+        dispatch({
+          type: 'GET_PETS',
+          payload: response.body.animals,
+        })
+      })
+
   })
 }
-
 
 export const removeCard = () => (dispatch, getState) => {
   // issue with api offset functionality :(
@@ -47,3 +60,4 @@ export const saveZip = zip => {
     payload: zip
   }
 }
+

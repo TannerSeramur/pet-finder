@@ -10,11 +10,9 @@ let initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "SAVED":
-      // console.log('⭐️', action.payload, '⭐️');
+      console.log('⭐️ saved pal', action.payload, '⭐️');
       return { ...state, savedPals: [...state.savedPals, action.payload] }
     case "GET_PETS":
-      console.log('👻');
-      // console.log('❎ seramuryet', action.payload, ' seramuryeet ✅');
       return { ...state, allPals: [...state.allPals, ...action.payload], offset: state.offset + Number(action.offset) };
     case "REMOVE_CARD":
       return { ...state, cardsLeft: state.cardsLeft - 1 }
