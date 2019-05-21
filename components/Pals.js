@@ -33,8 +33,6 @@ export class Pals extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state, ' ✅');
-
   return {
     myPals: state.pets.savedPals
   }

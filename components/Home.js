@@ -23,12 +23,14 @@ export class Home extends Component {
     this.setState({ zip: e.nativeEvent.text })
   }
 
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title} >perfect pal.</Text>
         <TextInput type="text" style={styles.input} value={this.state.zip} onChange={this.handleOnChange} placeholder='Enter A Zip Code' />
         <TouchableOpacity onPress={this.handleSubmit} style={styles.button}><Text style={styles.buttonText}>Find</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.handleSaved} style={styles.button}><Text style={styles.buttonText}>Saved</Text></TouchableOpacity>
       </View>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image, Modal, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, Image, Modal, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
 export class SoloPal extends Component {
   state = {
@@ -11,6 +11,7 @@ export class SoloPal extends Component {
   }
 
   render() {
+    console.log(this.props.pal);
     return (
       <View style={{ flexDirection: 'row', flex: 1 }}>
         <TouchableOpacity onPress={() => this.setModalVisible(!this.state.modalVisible)}>
@@ -48,10 +49,12 @@ export class SoloPal extends Component {
                 <Image source={{ uri: this.props.pal.photos[0].large }} style={styles.image} />
               </View>
               <Text style={{ paddingHorizontal: 20, paddingTop: 20 }}>{this.props.pal.age}</Text>
-              <Text style={{ paddingHorizontal: 20 }}>Gender: {this.props.pal.sex}</Text>
-              <Text style={{ paddingHorizontal: 20 }}>{this.props.pal.breeds.primary}</Text>
-              <Text style={styles.text}>{this.props.pal.description}</Text>
-              <Text style={styles.text}>Contact:</Text>
+              <Text style={{ paddingHorizontal: 20 }}>Gender: {this.props.pal.gender}</Text>
+              <Text style={{ paddingHorizontal: 20 }}>Breed: {this.props.pal.breeds.primary}</Text>
+              <Text style={styles.text}>Description: {this.props.pal.description}</Text>
+              <Text style={styles.text}>Cat friendly: {this.props.pal.environment.cats === null ? "Unknown" : this.props.pal.environment.cats.toString()}</Text>
+              <Text style={styles.text}>Dog friendly: {this.props.pal.environment.dogs === null ? "Unknown" : this.props.pal.environment.dogs.toString()}</Text>
+              <Text style={styles.text}>Kid friendly: {this.props.pal.environment.children === null ? "Unknown" : this.props.pal.environment.children.toString()}</Text>
               <Text style={styles.text}>Phone: {this.props.pal.contact.phone}</Text>
               <Text style={styles.text}>Email: {this.props.pal.contact.email}</Text>
 
