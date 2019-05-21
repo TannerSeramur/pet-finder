@@ -17,12 +17,10 @@ class Card extends React.Component {
   }
 
   render() {
-    console.log('this is props',this.props);
     let img =  this.props.photos.length && this.props.photos[0] ? this.props.photos[0].full : "https://via.placeholder.com/420x320/ff7f7f/333333?text=Sample";
     return (
       <View style={[styles.card, { backgroundColor: this.props.backgroundColor }]}>
         {/* <Text>{this.props.text}</Text> */}
-        {console.log('⭐️ ', img, 'HERE ⭐️')}
         <Image style={styles.thumbnail} source={{ uri: img}} />
       </View>
     )
@@ -60,7 +58,6 @@ class SwiperCards extends React.Component {
   }
 
   handleCardRemoved = () => {
-    console.log('removing!!');
     this.props.removeCard();
 
 
@@ -69,8 +66,7 @@ class SwiperCards extends React.Component {
     return (
       < SwipeCards
         cards={this.props.allPals}
-        renderCard={(cardData) => <Card {...cardData} />
-        }
+        renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
         yupStyle={{ top: 10 }}
         yupText={'SAVE!'}

@@ -22,7 +22,6 @@ export class Pals extends Component {
         </View>
         <View style={styles.item}>
           {this.props.myPals.map((pal, idx) => {
-            console.log('pal from pals', pal);
             return <SoloPal key={idx} pal={pal} />
           })}
 
