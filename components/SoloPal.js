@@ -29,7 +29,6 @@ export class SoloPal extends Component {
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            console.log('Modal has been closed.');
           }}>
           <ScrollView style={{ flux: 1 }}>
             <View style={styles.modalContainer}>

@@ -30,11 +30,11 @@ export const getPets = () => async (dispatch, getState) => {
     return superagent.get(PFURL)
       .set('Authorization', `Bearer ${token}`)
       .then(response => {
-        dispatch({
-          type: 'GET_PETS',
-          payload: response.body.animals,
-        })
-      })
+          dispatch({
+            type: 'GET_PETS',
+            payload: response.body.animals,
+          });
+      });
 
   })
 }
