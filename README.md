@@ -13,6 +13,7 @@ Perfect Pal was created out of a desire to encourage people to adopt pups from l
 * React-Native
 * Redux
 * react-native-swiper
+* Expo
 
 
 ### Get Started
