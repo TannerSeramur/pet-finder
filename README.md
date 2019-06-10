@@ -7,6 +7,7 @@ Perfect Pal was created out of a desire to encourage people to adopt pups from l
 
 ### Links and Resources
 * [Pet-Finder API](https://www.petfinder.com/developers/api-docs)
+* [Expo](https://expo.io/)
 
 ### Modules and Librarys
 * React-Native
