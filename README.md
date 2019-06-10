@@ -14,6 +14,17 @@ Perfect Pal was created out of a desire to encourage people to adopt pups from l
 * react-native-swiper
 
 
+### Get Started
+* Clone this respository 
+* Download Expo Client App from the App store on your mobile device. 
+* Run `npm install` from your command line to install all of the necessary package dependencies. 
+* Run `npm start` to kick up the expo server.
+* Open the camera on your phone.
+* Direct the camera at the QR code either from your terminal or from the Expo Bundler that opens in your browser. 
+* Enter your zip code in the input field
+* Start Swiping!
+* View your saved pets under the pals tab. 
+
 ### Tests
 `npm test`
 * all tests should pass
